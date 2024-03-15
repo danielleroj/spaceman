@@ -16,13 +16,17 @@ main {
     justify-content: space-evenly;
     flex-direction: row;
     flex-direction: wrap;
+    align-items: center;
     /* gap: 36px; */
 }
 
 #img-reveal {
-   border: solid black;
-   height: auto;
-   /* flex: 1; */
+   /* border: solid black; */
+}
+
+#img-reveal > img {
+    height: 50vmin;
+    padding-top: 20vmin;
 }
 
 .test {
@@ -30,7 +34,7 @@ main {
 }
 
 #intro {
-    border: 5px solid green;
+    /* border: 5px solid green; */
     text-align: center;
     text-shadow: 2px 2px 4px #000000;
     color: white;
