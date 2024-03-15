@@ -6,7 +6,7 @@
 body {
     /* align-items: center; */
     /* gap:  */
-    background-image: url("wp10955414-cake-shop-wallpapers.jpg");
+    background-image: url("imgs/wp10955414-cake-shop-wallpapers.jpg");
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -22,7 +22,6 @@ main {
 }
 
 #img-reveal {
-   border: solid black;
    padding-top: 20vmin;
 }
 
@@ -50,4 +49,8 @@ main {
     display: flex;
     height: 60vmin;
     width: 90vmin;
+}
+
+@media {
+    
 }
