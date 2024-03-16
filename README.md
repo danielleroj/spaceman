@@ -1,18 +1,18 @@
 PSUEDOCODE FOR SPACEMAN
 Define required constants
-Letters
-Categories
-Guesses (7)
+    Letters
+    Categories
 Define required variables to track state of game
-Chosen category
-Word in category
-Incorrect guesses
+    Guesses (7)
+    Chosen category
+    Word in category
+    Incorrect guesses
 Game state
 Store cached elements
-Word display
-Image display
-Letter display?
-Messages
+    Word display
+    Image display
+    Letter display?
+    Messages
 Initialize the game
 Initialize state variables
 Render values
