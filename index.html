@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Cake Cafe - Spaceman</title>
+    <title>Cloud Cake Cafe Word Game</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <link rel="icon" href="imgs/icons8-cake-16.png">
@@ -15,6 +15,7 @@
     <main class="container">
         <div class="left-column">
             <img src="imgs/bakerycat.PNG">
+            <p>Don't disappoint Biscuit!</p>
         </div>
         <div class="right-coloumn">
             <div id="intro">
@@ -22,9 +23,9 @@
                 <!-- <h2>a spaceman game adventure</h2> -->
             </div>
             <div id="gameplay">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel rerum accusamus dolore. Voluptate, similique nihil? Modi ad quia velit impedit, voluptatibus voluptates, odit, officiis consectetur voluptate laboriosam quidem omnis et.</p>
-                    guessing line -->
-                    gameplay
+                <p id="message">Welcome to the delightful world of Cloud Cake Cafe! <br>
+                Help Ms.Baker and her cat Biscuit bake the town's favorite sweets.</p>
+                <div id="word"></div>
             </div>
             <div class="buttons">
     
@@ -41,6 +42,7 @@
                 <button id="letters">K</button>
                 <button id="letters">L</button>
                 <button id="letters">M</button>
+                <br>
                 <button id="letters">N</button>
                 <button id="letters">O</button>
                 <button id="letters">P</button>
@@ -54,9 +56,12 @@
                 <button id="letters">X</button>            
                 <button id="letters">Y</button>            
                 <button id="letters">Z</button>            
-    
+                
             </div>
-                <button id="reset">try again</button>
+            <div id="reset-end-buttons">
+                <button id="game-btn">try again</button>
+                <!-- <button id="next-level">continue</button> -->
+            </div>
         </div>
     </main>
 </body>

@@ -2,6 +2,7 @@
     font-family: "Gluten", cursive;
     box-sizing: border-box;
     /* border: solid black; */
+}
 
 body {
     background-image: url("imgs/wp10955414-cake-shop-wallpapers.jpg");
@@ -14,30 +15,33 @@ body {
     display: flex;
     text-align: center;
     align-items: center;
-    margin: 10vmin 15vmin;
-    background-color: rgb(247, 222, 140, .5);
+    justify-content: center;
+    margin: 5vmin 20vmin 10vmin 30vmin;
+    background-color: rgb(247, 222, 140, .8);
+    border-radius: 5%;
+    box-shadow: 0px 3px 10px black;
 }
 
 .left-column {
-    /* border: solid black; */
-    margin: -10vmin;
+    margin-right: 15vmin;
+    text-align: center;
 }
 
 .left-column > img {
-    width: 50%;
-    height: 50%%;
+    width: 30vmin;
 }
 
 .right-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:  50px solid green;
 }
 
+
 #letters {
-    font-size: 6vmin;
+    font-size: 4vmin;
 }
 
 #intro {
@@ -45,21 +49,27 @@ body {
     text-shadow: 2px 2px 4px #000000;
     color: white;
     font-size: 1.5vw;
+    /* padding-right: 40vmin; */
 }
 
 #gameplay {
     height: 50vmin;
 }
 
-#reset  {
-    text-align: center;
-    margin: 1vmin;
-    font-size: 3.5vmin;
+button {
+    border-radius: 100%;
+    font-weight: 100;
+    padding: 1vmin;
+    cursor: pointer;
 }
 
-button {
-    border-radius: 30%;
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+#game-btn, #next-level {
     text-align: center;
-    font-weight: 100;
-    padding-top: 1vmin;
+    margin: 1vmin;
+    font-size: 2vmin;
 }
