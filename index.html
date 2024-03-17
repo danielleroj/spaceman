@@ -12,23 +12,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main class="container">
-        <div class="left-column">
-            <img src="imgs/bakerycat.PNG">
-            <p>Don't disappoint Biscuit!</p>
-        </div>
-        <div class="right-coloumn">
-            <div id="intro">
-                <h1>Cloud Cake Cafe</h1>
-                <!-- <h2>a spaceman game adventure</h2> -->
+    <div class="container">
+        <h1>Cloud Cake Cafe</h1>
+        <p id="message">Welcome to the delightful world of Cloud Cake Cafe! <br>
+        Help Ms.Baker and her cat Biscuit bake the town's favorite sweets.</p>
+        <div class="gameplay">
+            <img id="left-img" src="imgs/image_part_000.PNG" alt="cat">
+            <div class="right-coloumn">
+                <p id="mystery-word">Guessed word</ul>
             </div>
-            <div id="gameplay">
-                <p id="message">Welcome to the delightful world of Cloud Cake Cafe! <br>
-                Help Ms.Baker and her cat Biscuit bake the town's favorite sweets.</p>
-                <div id="word"></div>
-            </div>
-            <div class="buttons">
-    
+            <div class="keyboard"></div>
+            
                 <button id="letters">A</button>
                 <button id="letters">B</button>
                 <button id="letters">C</button>
@@ -58,11 +52,9 @@
                 <button id="letters">Z</button>            
                 
             </div>
-            <div id="reset-end-buttons">
                 <button id="game-btn">try again</button>
                 <!-- <button id="next-level">continue</button> -->
-            </div>
         </div>
-    </main>
+    </div>
 </body>
 </html>

@@ -14,7 +14,7 @@ Store cached elements
     Letter display?
     Messages
 Initialize the game
-Initialize state variables
+    Initialize state variables
 Render values
 Wait for user letter selection
 Handle letter selection
@@ -25,4 +25,3 @@ Show image for wrong selection
 Handle replay button
 Display play again button
 Start game over/repeat steps
-*add background audio
