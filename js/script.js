@@ -32,7 +32,7 @@ const spacecat = document.querySelector(".left-column img");
 
 /*----- event listeners -----*/
 game-btn.addEventListener('click', init);
-document.getElementsByClassName(keyboard).addEventListener('click', handleClick);
+document.querySelector(.keyboard).addEventListener('click', handleClick);
 
 
 /*----- functions -----*/
