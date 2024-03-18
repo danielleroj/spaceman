@@ -45,7 +45,7 @@ function handleClick() {
 function init() {
     currentWord = WORDS[0].split('');
     incorrectGuesses = [];
-    wordStatus = currentWord.map(letter => letter === '' ? '' : '_');
+    // wordStatus = currentWord.map();
     gameStatus = null;
     render();
  }
