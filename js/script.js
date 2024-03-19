@@ -25,7 +25,7 @@ const messageEl = document.querySelector("#message");
 const wordEl = document.querySelector("#mystery-word");
 const playEl = document.querySelector("#game-btn");
 const letterBtns = document.querySelectorAll(".letters");
-const spacecat = document.querySelector("#left-img");
+const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 /*----- event listeners -----*/
 // game-btn.addEventListener('click', init);
@@ -33,16 +33,27 @@ const wrongGuessesEl = document.querySelector("#wrong-guesses");
 /*----- functions -----*/
 init();
 
+function checkWin() {
+  if (wrongGuesses === 6) {
+
+  }
+}
+
 function renderKeyboard() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   letterBtns.forEach((button, idx) => {
     const letter = alphabet[idx];
     button.addEventListener("click", () => {
-      //   console.log(`${letter} was clicked.`);
       guessedLetters.push(letter);
-      if (!word.includes(letter)) {
-        wrongGuesses++
-      }
+      if (wrongGuesses < 6 && !word.includes(letter)) {
+        wrongGuesses++;
+        if (wrongGuesses === 6) {
+          letterBtns.forEach((button) => {
+            button.disabled = true;
+          })
+          return wrongGuessesEl.innerText = "Better luck next time";
+        }
+      } 
       wordPlaceholder(word, guessedLetters);
     });
   });
@@ -65,6 +76,7 @@ function wordPlaceholder(word) {
 function init() {
   //   wordStatus = currentWord.map();
   //   gameStatus = null;
+  wrongGuesses = 0;
   guessedLetters = [];
   wordPlaceholder(word);
   renderKeyboard();
