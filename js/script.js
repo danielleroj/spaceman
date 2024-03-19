@@ -26,7 +26,7 @@ const wordEl = document.querySelector("#mystery-word");
 const playEl = document.querySelector("#game-btn");
 const letterBtns = document.querySelectorAll(".letters");
 const spacecat = document.querySelector("#left-img");
-
+const wrongGuessesEl = document.querySelector("#wrong-guesses");
 /*----- event listeners -----*/
 // game-btn.addEventListener('click', init);
 
@@ -40,6 +40,9 @@ function renderKeyboard() {
     button.addEventListener("click", () => {
       //   console.log(`${letter} was clicked.`);
       guessedLetters.push(letter);
+      if (!word.includes(letter)) {
+        wrongGuesses++
+      }
       wordPlaceholder(word, guessedLetters);
     });
   });
@@ -56,6 +59,7 @@ function wordPlaceholder(word) {
     }
   });
   wordEl.innerText = hideWord.join("");
+  wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
 }
 
 function init() {
