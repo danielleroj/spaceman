@@ -44,6 +44,9 @@ body {
     border: solid black;
 }
 
+.hidden {
+    display: none;
+}
 /* .gameplay {
     display: flex;
     flex-direction: row;
@@ -71,7 +74,5 @@ body {
 } */
 
 /* #game-btn {
-    text-align: center;
-    margin: 1vmin;
-    font-size: 2vmin;
+    display: none;
 } */

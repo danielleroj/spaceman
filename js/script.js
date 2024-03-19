@@ -13,39 +13,35 @@ const SPACECAT_IMGS = [
 const word = "espresso";
 
 /*----- app's state (variables) -----*/
-let correctAnswer = " ";
-let currentWord = null;
+// let currentWordIdx = 0;
 let guessedLetters = [];
 let wrongGuesses;
-// let levels;
-let gameStatus;
 
 // /*----- cached element references -----*/
 const messageEl = document.querySelector("#message");
 const wordEl = document.querySelector("#mystery-word");
-const playEl = document.querySelector("#game-btn");
+const playBtn = document.querySelector("#game-btn");
 const letterBtns = document.querySelectorAll(".letters");
 const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
+
 /*----- event listeners -----*/
-// game-btn.addEventListener('click', init);
+playBtn.addEventListener("click", init);
 
 /*----- functions -----*/
 init();
 
-
 function init() {
-  //   wordStatus = currentWord.map();
-  //   gameStatus = null;
-  wrongGuesses = 0;
   guessedLetters = [];
   renderKeyboard();
+  wrongGuesses = 0;
   renderSpacecatImg(wrongGuesses);
   wordPlaceholder(word);
   render();
+}
 
-function renderSpacecatImg(wrongGuesses) {
-    spacecat.src = `imgs/spacecat-${wrongGuesses}.png`;
+function renderSpacecatImg() {
+  spacecat.src = `imgs/spacecat-${wrongGuesses}.png`;
 }
 
 function renderKeyboard() {
@@ -54,17 +50,14 @@ function renderKeyboard() {
     const letter = alphabet[idx];
     button.addEventListener("click", () => {
       guessedLetters.push(letter);
-      if (wrongGuesses < 6 && !word.includes(letter)) {
+      if (!word.includes(letter)) {
         wrongGuesses++;
-        if (wrongGuesses === 6) {
-          letterBtns.forEach((button) => {
-            button.disabled = true;
-          });
-          return (wrongGuessesEl.innerText = "Better luck next time");
+        if (wrongGuesses === MAX_GUESSES) {
+          endGame();
         }
       }
       wordPlaceholder(word, guessedLetters);
-      renderSpacecatImg(wrongGuesses);
+      renderSpacecatImg();
     });
   });
 }
@@ -72,27 +65,29 @@ function renderKeyboard() {
 function wordPlaceholder(word) {
   const letters = word.split("");
   const placeholder = "🧁";
-  let hideWord = letters.map((letter) => {
-    if (guessedLetters.includes(letter)) {
-      return letter;
-    } else {
-      return placeholder;
-    }
-  });
+  let hideWord = word.split("").map((letter) => guessedLetters.includes(letter) ? letter : placeholder);
   wordEl.innerText = hideWord.join("");
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
+  console.log("wrongGuesses:", wrongGuesses);
 }
 
+function endGame() {
+  playBtn.classList.remove("hidden");
+  letterBtns.forEach((button) => {
+    button.disabled = true;
+  });
 }
 
-// function renderMessage() {
-//     if (gameStatus === 'W') {
-//         messageEl.innerText = 'You did it! On to the next round';
-//     } else if (gameStatus === 'L') {
-//         messageEl.innerText = `Hmm, that's not right. The answer was ${wordEl}.`
-//     }
-// }
+function resetGame() {
+  console.log("Resetting game...");
+  guessedLetters = [];
+  wrongGuesses = 0;
+  letterBtns.forEach((button) => {
+    button.disabled = false;
+  });
+  playBtn.classList.add("hidden");
+}
 
 function render() {
-  //   renderMessage;
+  resetGame();
 }
