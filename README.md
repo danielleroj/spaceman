@@ -1,4 +1,5 @@
-# PSUEDOCODE FOR SPACEMAN
+# SPACEMAN
+## Psuedocode
 ### Define required constants
     Letters
     Categories
