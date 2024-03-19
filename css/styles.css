@@ -5,6 +5,10 @@
 }
 
 body {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
     background-image: url("../imgs/wp10955414-cake-shop-wallpapers.jpg");
     background-size: cover;
     background-position: center center;
@@ -23,7 +27,6 @@ body {
 }
 
 .container > h1 {
-    text-align: center;
     text-shadow: 2px 2px 4px #000000;
     color: white;
     /* word-spacing: 1vmin; */
