@@ -26,7 +26,7 @@ const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 
 /*----- event listeners -----*/
-playBtn.addEventListener("click", init);
+playBtn.addEventListener("click", resetGame);
 
 /*----- functions -----*/
 init();
@@ -35,9 +35,9 @@ function init() {
   guessedLetters = [];
   renderKeyboard();
   wrongGuesses = 0;
-  renderSpacecatImg(wrongGuesses);
+  renderSpacecatImg();
   wordPlaceholder(word);
-  render();
+  // render();
 }
 
 function renderSpacecatImg() {
@@ -56,14 +56,14 @@ function renderKeyboard() {
           endGame();
         }
       }
-      wordPlaceholder(word, guessedLetters);
+      wordPlaceholder(word);
       renderSpacecatImg();
     });
   });
 }
 
 function wordPlaceholder(word) {
-  const letters = word.split("");
+  // const letters = word.split("");
   const placeholder = "🧁";
   let hideWord = word.split("").map((letter) => guessedLetters.includes(letter) ? letter : placeholder);
   wordEl.innerText = hideWord.join("");
@@ -72,7 +72,7 @@ function wordPlaceholder(word) {
 }
 
 function endGame() {
-  playBtn.classList.remove("hidden");
+  // playBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
@@ -80,14 +80,15 @@ function endGame() {
 
 function resetGame() {
   console.log("Resetting game...");
-  guessedLetters = [];
-  wrongGuesses = 0;
+  // guessedLetters = [];
+  // wrongGuesses = 0;
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
-  playBtn.classList.add("hidden");
+  // playBtn.classList.add("hidden");
+  init();
 }
 
 function render() {
-  resetGame();
+  // resetGame();
 }
