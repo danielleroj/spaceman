@@ -1,22 +1,22 @@
 /*----- constants -----*/
 const WORDS = ["espresso", "croissant", "tiramisu"];
 const MAX_GUESSES = 6;
-// const SPACECAT_IMG = [
-//   "imgs/image_part_000.PNG",
-//   "imgs/image_part_001.png",
-//   "imgs/image_part_002.png",
-//   "imgs/image_part_003.png",
-//   "imgs/image_part_004.png",
-//   "imgs/image_part_005.png",
-//   "imgs/image_part_006.png",
-// ];
+const SPACECAT_IMGS = [
+  "imgs/spacecat-0.png",
+  "imgs/spacecat-1.png",
+  "imgs/spacecat-2.png",
+  "imgs/spacecat-3.png",
+  "imgs/spacecat-4.png",
+  "imgs/spacecat-5.png",
+  "imgs/spacecat-6.png",
+];
 const word = "espresso";
 
 /*----- app's state (variables) -----*/
 let correctAnswer = " ";
 let currentWord = null;
 let guessedLetters = [];
-let wrongGuesses = 0;
+let wrongGuesses;
 // let levels;
 let gameStatus;
 
@@ -33,10 +33,19 @@ const wrongGuessesEl = document.querySelector("#wrong-guesses");
 /*----- functions -----*/
 init();
 
-function checkWin() {
-  if (wrongGuesses === 6) {
 
-  }
+function init() {
+  //   wordStatus = currentWord.map();
+  //   gameStatus = null;
+  wrongGuesses = 0;
+  guessedLetters = [];
+  renderKeyboard();
+  renderSpacecatImg(wrongGuesses);
+  wordPlaceholder(word);
+  render();
+
+function renderSpacecatImg(wrongGuesses) {
+    spacecat.src = `imgs/spacecat-${wrongGuesses}.png`;
 }
 
 function renderKeyboard() {
@@ -50,11 +59,12 @@ function renderKeyboard() {
         if (wrongGuesses === 6) {
           letterBtns.forEach((button) => {
             button.disabled = true;
-          })
-          return wrongGuessesEl.innerText = "Better luck next time";
+          });
+          return (wrongGuessesEl.innerText = "Better luck next time");
         }
-      } 
+      }
       wordPlaceholder(word, guessedLetters);
+      renderSpacecatImg(wrongGuesses);
     });
   });
 }
@@ -73,14 +83,6 @@ function wordPlaceholder(word) {
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
 }
 
-function init() {
-  //   wordStatus = currentWord.map();
-  //   gameStatus = null;
-  wrongGuesses = 0;
-  guessedLetters = [];
-  wordPlaceholder(word);
-  renderKeyboard();
-  render();
 }
 
 // function renderMessage() {
@@ -92,6 +94,5 @@ function init() {
 // }
 
 function render() {
-  spacecat.src = `imgs/image_part_0${wrongGuesses}.png`;
   //   renderMessage;
 }
