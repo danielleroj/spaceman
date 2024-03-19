@@ -1,7 +1,7 @@
 # PSUEDOCODE FOR SPACEMAN
 ### Define required constants
- Letters
- Categories
+    Letters
+    Categories
 
 ### Define required variables to track state of game
     Guesses (7)
