@@ -1,5 +1,7 @@
 /*----- constants -----*/
-const WORDS = ["cake", "espresso", "croissant", "tiramisu"];
+const WORDS = ["cake", "espresso", "croissant", "tiramisu", "coffee", "latte", 
+"cappuccino", "mocha", "baguette", "scone", "pastry", "cupcake", "macaron", "donut",
+"biscotti", "brioche", "danish", "tart", "eclair", "muffin", "biscuit", "pancake"];
 const MAX_GUESSES = 6;
 const SPACECAT_IMGS = [
   "imgs/spacecat-0.png",
@@ -14,6 +16,7 @@ const SPACECAT_IMGS = [
 /*----- app's state (variables) -----*/
 let currentWordIdx = 0;
 let guessedLetters = [];
+let completedWords = 0;
 let wrongGuesses;
 let word;
 
@@ -26,11 +29,11 @@ const continueBtn = document.querySelector("#continue");
 const letterBtns = document.querySelectorAll(".letters");
 const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
+const completedWordsEl = document.querySelector("#completed-words");
 
 /*----- event listeners -----*/
 resetBtn.addEventListener("click", resetGame);
 continueBtn.addEventListener("click", continueGame);
-// letterBtns.addEventListener("click", renderKeyboard);
 
 /*----- functions -----*/
 init();
@@ -44,7 +47,6 @@ function init() {
   renderSpacecatImg();
   word = getNextWord();
   wordPlaceholder(word);
-
 }
 
 function renderSpacecatImg() {
@@ -79,23 +81,24 @@ function wordPlaceholder(word) {
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
 }
 
+function getNextWord() {
+  word = WORDS.sort((a, b) => a.length - b.length)[0];
+  if (currentWordIdx < WORDS.length) {
+    return WORDS[currentWordIdx++];
+  } else {
+    return null;
+  }
+}
+
 function checkWin(){
+  completedWords++;
   gameStatusMsg.innerText =  `You did it!`;
   resetBtn.classList.remove("hidden");
   continueBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
-  // guessedLetters = [];
-  // getNextWord();
-}
-
-function getNextWord() {
-  if (currentWordIdx < WORDS.length) {
-    return WORDS[currentWordIdx++];
-  } else {
-    return null;
-  }
+  completedWordsEl.innerText = `Completed words: ${completedWords}`;
 }
 
 function continueGame() {
@@ -105,30 +108,30 @@ function continueGame() {
   renderSpacecatImg();
   wordPlaceholder(word);
   gameStatusMsg.innerText = "";
-  // playBtn.classList.add("hidden");
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
-  // wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
 }
 
 function resetGame() {
   currentWordIdx = 0;
   guessedLetters = [];
   wrongGuesses = 0;
+  completedWords = 0;
   word = getNextWord();
   wordPlaceholder(word);
+  renderSpacecatImg();
   gameStatusMsg.innerText = "";
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
+  completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
   gameStatusMsg.innerText = "";
-  renderSpacecatImg();
 
 }
 

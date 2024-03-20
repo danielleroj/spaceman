@@ -15,12 +15,7 @@ body {
 }
 
 .container {
-    /* display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    */
-    margin-top: 5vmin;
+    margin-top: 1.5vmin;
     background-color: rgb(247, 222, 140, .8);
     border-radius: 5%;
     box-shadow: 0px 3px 10px black;
@@ -29,48 +24,64 @@ body {
 .container > h1 {
     text-shadow: 2px 2px 4px #000000;
     color: white;
-    /* word-spacing: 1vmin; */
-    /* font-size: 1.5vw; */
 }
 
 .container > p {
     text-align: center;
-    /* text-shadow: 2px 2px 4px #000000; */
+    text-shadow: 2px 2px 4px #000000;
     color: white;
 }
 
 #spacecat {
-    width: 30vmin;
+    width: 25vmin;
 }
 
 .hidden {
     display: none;
 }
-/* .gameplay {
-    display: flex;
-    flex-direction: row;
-} */
 
-/* .keyboard {
-    display: flex;
-    justify-content: center;
-} */
+.keyboard {
+    margin: 0 4vmin;
+}
 
-/* #letters {
-    font-size: 4vmin;
-} */
-
-/* button {
-    border-radius: 100%;
-    font-weight: 100;
-    padding: 1vmin;
-    cursor: pointer;
-} */
-
-/* button:hover {
-    background-color: black;
+.letters {
+    font-size: 3vmin;
     color: white;
-} */
+    background-color: rgb(123, 131, 100);
+    border: .1vmin solid grey;
+    border-radius: 50%;
+    padding: .6vmin;
+    cursor: pointer;
+}
+
+#reset, #continue {
+    color: white;
+    background-color: rgb(123, 131, 100);
+    border: .18vmin solid rgb(83, 81, 81);
+    border-radius: 50%;
+    padding: .6vmin;
+    margin-bottom: 1vmin;
+    cursor: pointer;
+}
+
+#reset:hover {
+    color: rgb(123, 131, 100);
+    background-color: white;
+}
+
+#continue:hover {
+    color: rgb(123, 131, 100);
+    background-color: white;
+}
+
+#mystery-word {
+    font-size: 5vmin;
+}
+
+button:hover {
+    color: rgb(123, 131, 100);
+    background-color: white;
+}
 
 /* #game-btn {
     display: none;
