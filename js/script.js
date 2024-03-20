@@ -24,9 +24,11 @@ const playBtn = document.querySelector("#game-btn");
 const letterBtns = document.querySelectorAll(".letters");
 const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
+const keyboard = document.querySelector(".keyboard");
 
 /*----- event listeners -----*/
 playBtn.addEventListener("click", resetGame);
+// letterBtns.addEventListener("click", renderKeyboard);
 
 /*----- functions -----*/
 init();
@@ -50,6 +52,7 @@ function renderKeyboard() {
     const letter = alphabet[idx];
     button.addEventListener("click", () => {
       guessedLetters.push(letter);
+      console.log("hi!");
       if (!word.includes(letter)) {
         wrongGuesses++;
         if (wrongGuesses === MAX_GUESSES) {
@@ -85,8 +88,10 @@ function resetGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
+  guessedLetters = [];
+  wrongGuesses = 0;
   // playBtn.classList.add("hidden");
-  init();
+  // renderKeyboard();
 }
 
 function render() {
