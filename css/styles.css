@@ -23,7 +23,7 @@ body {
     font-size: 6vmin;
     text-shadow: 2px 2px 4px #000000;
     color: white;
-    margin-bottom: 1vmin;
+    margin: 1.5vmin 2vmin 2vmin 2vmin;
 }
 
 h2 {
@@ -35,12 +35,13 @@ h2 {
     width: 23vmin;
 }
 
-.hidden {
-    display: none;
+#happy-cat-img {
+    height: 33vmin;
+    width: 23vmin;
 }
 
-.keyboard {
-    margin: 0 4vmin;
+.hidden {
+    display: none;
 }
 
 .letters {
@@ -76,6 +77,8 @@ h2 {
 #mystery-word {
     font-size: 5vmin;
     margin-top: 1vmin;
+    margin-bottom: 2vmin;
+    letter-spacing: .5vmin;
 }
 
 button:hover {

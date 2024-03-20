@@ -27,9 +27,11 @@ const wordEl = document.querySelector("#mystery-word");
 const resetBtn = document.querySelector("#reset");
 const continueBtn = document.querySelector("#continue");
 const letterBtns = document.querySelectorAll(".letters");
-const spacecat = document.querySelector("#spacecat");
+const spacecatImg = document.querySelector("#spacecat");
+const startupImg = document.querySelector("#happy-cat-img");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 const completedWordsEl = document.querySelector("#completed-words");
+
 
 /*----- event listeners -----*/
 resetBtn.addEventListener("click", resetGame);
@@ -39,18 +41,18 @@ continueBtn.addEventListener("click", continueGame);
 init();
 
 function init() {
+  spacecatImg.classList.add("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
   guessedLetters = [];
   renderKeyboard();
   wrongGuesses = 0;
-  renderSpacecatImg();
   word = getNextWord();
   wordPlaceholder(word);
 }
 
 function renderSpacecatImg() {
-  spacecat.src = `imgs/spacecat-${wrongGuesses}.png`;
+  spacecatImg.src = `imgs/spacecat-${wrongGuesses}.png`;
 }
 
 function renderKeyboard() {
@@ -65,6 +67,8 @@ function renderKeyboard() {
           loseGame();
         }
       }
+      spacecatImg.classList.remove("hidden");
+      startupImg.classList.add("hidden");
       wordPlaceholder(word);
       renderSpacecatImg();
       button.disabled = true;
@@ -87,7 +91,8 @@ function getNextWord() {
   if (currentWordIdx < WORDS.length) {
     return WORDS[currentWordIdx++];
   } else {
-    return null;
+    confetti2();
+    gameStatusMsg.innerText = "CONGRATULATIONS! You've won the game!";
   }
 }
 
@@ -100,6 +105,8 @@ function checkWin(){
     button.disabled = true;
   });
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
+
+  confetti();
 }
 
 function continueGame() {
@@ -128,6 +135,8 @@ function resetGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
+  spacecatImg.classList.add("hidden");
+  startupImg.classList.remove("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
@@ -142,4 +151,39 @@ function loseGame() {
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
+}
+
+// expirimental confetti
+function confetti2() {
+  const duration = 15 * 1000,
+  animationEnd = Date.now() + duration,
+  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+const interval = setInterval(function() {
+  const timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  const particleCount = 50 * (timeLeft / duration);
+
+  // since particles fall down, start a bit higher than random
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+    })
+  );
+  confetti(
+    Object.assign({}, defaults, {
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+    })
+  );
+}, 250);
 }
