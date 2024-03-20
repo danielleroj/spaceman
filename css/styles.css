@@ -22,15 +22,16 @@ body {
 }
 
 .container > h1 {
+    font-size: 6vmin;
     text-shadow: 2px 2px 4px #000000;
     color: white;
+    margin-bottom: 1vmin;
 }
 
-.container > p {
-    text-align: center;
-    text-shadow: 2px 2px 4px #000000;
+h2 {
     color: white;
-}
+    text-shadow: 2px 2px 4px #000000;
+  }
 
 #spacecat {
     width: 25vmin;
@@ -60,7 +61,7 @@ body {
     border: .18vmin solid rgb(83, 81, 81);
     border-radius: 50%;
     padding: .6vmin;
-    margin-bottom: 1vmin;
+    margin-bottom: 2vmin;
     cursor: pointer;
 }
 
@@ -83,6 +84,6 @@ button:hover {
     background-color: white;
 }
 
-/* #game-btn {
-    display: none;
-} */
+button:disabled {
+    opacity: .3;
+}

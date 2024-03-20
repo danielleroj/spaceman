@@ -67,6 +67,7 @@ function renderKeyboard() {
       }
       wordPlaceholder(word);
       renderSpacecatImg();
+      button.disabled = true;
     });
   });
 }
