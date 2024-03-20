@@ -19,6 +19,7 @@ let wrongGuesses;
 
 // /*----- cached element references -----*/
 const messageEl = document.querySelector("#message");
+const gameStatusMsg = document.querySelector("#game-status-message");
 const wordEl = document.querySelector("#mystery-word");
 const playBtn = document.querySelector("#game-btn");
 const letterBtns = document.querySelectorAll(".letters");
@@ -34,12 +35,13 @@ playBtn.addEventListener("click", resetGame);
 init();
 
 function init() {
+  playBtn.classList.add("hidden");
   guessedLetters = [];
   renderKeyboard();
   wrongGuesses = 0;
   renderSpacecatImg();
   wordPlaceholder(word);
-  // render();
+
 }
 
 function renderSpacecatImg() {
@@ -52,11 +54,10 @@ function renderKeyboard() {
     const letter = alphabet[idx];
     button.addEventListener("click", () => {
       guessedLetters.push(letter);
-      console.log("hi!");
       if (!word.includes(letter)) {
         wrongGuesses++;
         if (wrongGuesses === MAX_GUESSES) {
-          endGame();
+          loseGame();
         }
       }
       wordPlaceholder(word);
@@ -66,34 +67,43 @@ function renderKeyboard() {
 }
 
 function wordPlaceholder(word) {
-  // const letters = word.split("");
   const placeholder = "🧁";
-  let hideWord = word.split("").map((letter) => guessedLetters.includes(letter) ? letter : placeholder);
-  wordEl.innerText = hideWord.join("");
+  let mysteryWord = word.split("").map((letter) => guessedLetters.includes(letter) ? letter : placeholder);
+  wordEl.innerText = mysteryWord.join("");
+  if (!mysteryWord.includes(placeholder)) {
+    checkWin();
+  }
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
-  console.log("wrongGuesses:", wrongGuesses);
 }
 
-function endGame() {
-  // playBtn.classList.remove("hidden");
+function checkWin(){
+  gameStatusMsg.innerText =  `You did it!`;
+  playBtn.classList.remove("hidden");
+  letterBtns.forEach((button) => {
+    button.disabled = true;
+  });
+  guessedLetters = [];
+}
+
+
+function loseGame() {
+  gameStatusMsg.innerText =  `Better luck next time!`;
+  playBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
 }
 
 function resetGame() {
-  console.log("Resetting game...");
-  // guessedLetters = [];
-  // wrongGuesses = 0;
+  // playBtn.classList.add("hidden");
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
   guessedLetters = [];
   wrongGuesses = 0;
-  // playBtn.classList.add("hidden");
-  // renderKeyboard();
+  wordPlaceholder(word);
+  wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
+  gameStatusMsg.innerText = "";
+  renderSpacecatImg();
 }
 
-function render() {
-  // resetGame();
-}
