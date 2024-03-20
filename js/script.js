@@ -1,5 +1,5 @@
 /*----- constants -----*/
-const WORDS = ["espresso", "croissant", "tiramisu"];
+const WORDS = ["cake", "espresso", "croissant", "tiramisu"];
 const MAX_GUESSES = 6;
 const SPACECAT_IMGS = [
   "imgs/spacecat-0.png",
@@ -10,36 +10,39 @@ const SPACECAT_IMGS = [
   "imgs/spacecat-5.png",
   "imgs/spacecat-6.png",
 ];
-const word = "espresso";
 
 /*----- app's state (variables) -----*/
-// let currentWordIdx = 0;
+let currentWordIdx = 0;
 let guessedLetters = [];
 let wrongGuesses;
+let word;
 
 // /*----- cached element references -----*/
 const messageEl = document.querySelector("#message");
 const gameStatusMsg = document.querySelector("#game-status-message");
 const wordEl = document.querySelector("#mystery-word");
-const playBtn = document.querySelector("#game-btn");
+const resetBtn = document.querySelector("#reset");
+const continueBtn = document.querySelector("#continue");
 const letterBtns = document.querySelectorAll(".letters");
 const spacecat = document.querySelector("#spacecat");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
-const keyboard = document.querySelector(".keyboard");
 
 /*----- event listeners -----*/
-playBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetGame);
+continueBtn.addEventListener("click", continueGame);
 // letterBtns.addEventListener("click", renderKeyboard);
 
 /*----- functions -----*/
 init();
 
 function init() {
-  playBtn.classList.add("hidden");
+  resetBtn.classList.add("hidden");
+  continueBtn.classList.add("hidden");
   guessedLetters = [];
   renderKeyboard();
   wrongGuesses = 0;
   renderSpacecatImg();
+  word = getNextWord();
   wordPlaceholder(word);
 
 }
@@ -78,32 +81,61 @@ function wordPlaceholder(word) {
 
 function checkWin(){
   gameStatusMsg.innerText =  `You did it!`;
-  playBtn.classList.remove("hidden");
+  resetBtn.classList.remove("hidden");
+  continueBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
+  // guessedLetters = [];
+  // getNextWord();
+}
+
+function getNextWord() {
+  if (currentWordIdx < WORDS.length) {
+    return WORDS[currentWordIdx++];
+  } else {
+    return null;
+  }
+}
+
+function continueGame() {
   guessedLetters = [];
-}
-
-
-function loseGame() {
-  gameStatusMsg.innerText =  `Better luck next time!`;
-  playBtn.classList.remove("hidden");
-  letterBtns.forEach((button) => {
-    button.disabled = true;
-  });
-}
-
-function resetGame() {
+  wrongGuesses = 0;
+  word = getNextWord();
+  renderSpacecatImg();
+  wordPlaceholder(word);
+  gameStatusMsg.innerText = "";
   // playBtn.classList.add("hidden");
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
+  resetBtn.classList.add("hidden");
+  continueBtn.classList.add("hidden");
+  // wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
+}
+
+function resetGame() {
+  currentWordIdx = 0;
   guessedLetters = [];
   wrongGuesses = 0;
+  word = getNextWord();
   wordPlaceholder(word);
+  gameStatusMsg.innerText = "";
+  letterBtns.forEach((button) => {
+    button.disabled = false;
+  });
+  resetBtn.classList.add("hidden");
+  continueBtn.classList.add("hidden");
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
   gameStatusMsg.innerText = "";
   renderSpacecatImg();
+
 }
 
+function loseGame() {
+  gameStatusMsg.innerText =  `Better luck next time!`;
+  resetBtn.classList.remove("hidden");
+  letterBtns.forEach((button) => {
+    button.disabled = true;
+  });
+}
