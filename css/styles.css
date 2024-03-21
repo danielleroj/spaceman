@@ -17,6 +17,7 @@ body {
     background-color: rgb(247, 222, 140, .8);
     border-radius: 5%;
     box-shadow: 0px 3px 10px black;
+    margin-top: 1vmin;
 }
 
 .container > h1 {
@@ -29,29 +30,38 @@ body {
 h2 {
     color: white;
     text-shadow: 2px 2px 4px #000000;
-  }
+}
 
-#spacecat {
-    width: 23vmin;
+p {
+    color: rgb(83, 39, 20)
+}
+
+#sad-cat-img {
+    width: 30vmin;
 }
 
 #happy-cat-img {
-    height: 33vmin;
-    width: 23vmin;
+    width: 30vmin;
 }
 
 .hidden {
     display: none;
 }
 
+.keyboard {
+    margin-left: 5vmin;
+    margin-right: 5vmin;
+}
+
 .letters {
-    font-size: 3vmin;
+    font-size: 4vmin;
     color: white;
     background-color: rgb(123, 131, 100);
     border: .1vmin solid grey;
     border-radius: 50%;
     padding: .6vmin;
     cursor: pointer;
+    margin: .2vmin;
 }
 
 #reset, #continue {
@@ -60,7 +70,7 @@ h2 {
     border: .18vmin solid rgb(83, 81, 81);
     border-radius: 50%;
     padding: .6vmin;
-    margin-bottom: 1vmin;
+    margin-bottom: 1.5vmin;
     cursor: pointer;
 }
 
@@ -76,7 +86,7 @@ h2 {
 
 #mystery-word {
     font-size: 5vmin;
-    margin-top: 1vmin;
+    margin-top: 2vmin;
     margin-bottom: 2vmin;
     letter-spacing: .5vmin;
 }

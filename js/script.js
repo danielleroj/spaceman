@@ -3,15 +3,15 @@ const WORDS = ["cake", "espresso", "croissant", "tiramisu", "coffee", "latte",
 "cappuccino", "mocha", "baguette", "scone", "pastry", "cupcake", "macaron", "donut",
 "biscotti", "brioche", "danish", "tart", "eclair", "muffin", "biscuit", "pancake"];
 const MAX_GUESSES = 6;
-const SPACECAT_IMGS = [
-  "imgs/spacecat-0.png",
-  "imgs/spacecat-1.png",
-  "imgs/spacecat-2.png",
-  "imgs/spacecat-3.png",
-  "imgs/spacecat-4.png",
-  "imgs/spacecat-5.png",
-  "imgs/spacecat-6.png",
-];
+// const SPACECAT_IMGS = [
+//   "imgs/spacecat-0.png",
+//   "imgs/spacecat-1.png",
+//   "imgs/spacecat-2.png",
+//   "imgs/spacecat-3.png",
+//   "imgs/spacecat-4.png",
+//   "imgs/spacecat-5.png",
+//   "imgs/spacecat-6.png",
+// ];
 
 /*----- app's state (variables) -----*/
 let currentWordIdx = 0;
@@ -27,7 +27,7 @@ const wordEl = document.querySelector("#mystery-word");
 const resetBtn = document.querySelector("#reset");
 const continueBtn = document.querySelector("#continue");
 const letterBtns = document.querySelectorAll(".letters");
-const spacecatImg = document.querySelector("#spacecat");
+const progressImg = document.querySelector("#sad-cat-img");
 const startupImg = document.querySelector("#happy-cat-img");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 const completedWordsEl = document.querySelector("#completed-words");
@@ -41,7 +41,7 @@ continueBtn.addEventListener("click", continueGame);
 init();
 
 function init() {
-  spacecatImg.classList.add("hidden");
+  progressImg.classList.add("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
   guessedLetters = [];
@@ -52,7 +52,7 @@ function init() {
 }
 
 function renderSpacecatImg() {
-  spacecatImg.src = `imgs/spacecat-${wrongGuesses}.png`;
+  progressImg.src = `imgs/cat-${wrongGuesses}.png`;
 }
 
 function renderKeyboard() {
@@ -67,7 +67,7 @@ function renderKeyboard() {
           loseGame();
         }
       }
-      spacecatImg.classList.remove("hidden");
+      progressImg.classList.remove("hidden");
       startupImg.classList.add("hidden");
       wordPlaceholder(word);
       renderSpacecatImg();
@@ -104,7 +104,7 @@ function checkWin(){
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
-  completedWordsEl.innerText = `Completed words: ${completedWords}`;
+  completedWordsEl.innerText = `Completed Words: ${completedWords}`;
 
   confetti();
 }
@@ -135,7 +135,7 @@ function resetGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
-  spacecatImg.classList.add("hidden");
+  progressImg.classList.add("hidden");
   startupImg.classList.remove("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
