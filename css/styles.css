@@ -36,16 +36,16 @@ p {
     color: rgb(83, 39, 20)
 }
 
-#sad-cat-img {
-    width: 30vmin;
+#progress-img {
+    height: 30vmin;
 }
 
-#happy-cat-img {
-    width: 30vmin;
+#starting-img {
+    height: 30vmin;
 }
 
 #word-complete-img {
-    width: 30vmin;
+    height: 30vmin;
 }
 
 .hidden {

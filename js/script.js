@@ -28,6 +28,10 @@ const completeWordImgs = [
   "imgs/pusheen-cookie.gif",
   "imgs/pusheen-bun.gif",
   "imgs/pusheen-reeses.gif",
+  "imgs/pusheen-cooking.gif",
+  "imgs/pusheen-donuts.gif",
+  "imgs/pusheen-flan.gif",
+  "imgs/pusheen-wafer.gif",
 ];
 
 /*----- app's state (variables) -----*/
@@ -43,11 +47,11 @@ const wordEl = document.querySelector("#mystery-word");
 const resetBtn = document.querySelector("#reset");
 const continueBtn = document.querySelector("#continue");
 const letterBtns = document.querySelectorAll(".letters");
-const progressImg = document.querySelector("#sad-cat-img");
-const startupImg = document.querySelector("#happy-cat-img");
+const progressImg = document.querySelector("#progress-img");
+const startupImg = document.querySelector("#starting-img");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 const completedWordsEl = document.querySelector("#completed-words");
-const completedWordImgEl = document.querySelector("#word-complete-img");
+const completedWordImg = document.querySelector("#word-complete-img");
 
 /*----- event listeners -----*/
 resetBtn.addEventListener("click", resetGame);
@@ -57,10 +61,7 @@ continueBtn.addEventListener("click", continueGame);
 init();
 
 function init() {
-  completedWordImgEl.classList.add("hidden");
-  progressImg.classList.add("hidden");
-  resetBtn.classList.add("hidden");
-  continueBtn.classList.add("hidden");
+  hideBtnsImgs();
   guessedLetters = [];
   renderKeyboard();
   wrongGuesses = 0;
@@ -74,8 +75,8 @@ function renderSpacecatImg() {
 
 function randomImgs() {
   let randomImg = Math.floor(Math.random() * completeWordImgs.length);
-  completedWordImgEl.src = completeWordImgs[randomImg];
-  completedWordImgEl.classList.remove("hidden");
+  completedWordImg.src = completeWordImgs[randomImg];
+  completedWordImg.classList.remove("hidden");
 }
 
 function renderKeyboard() {
@@ -135,6 +136,7 @@ function checkWin() {
 }
 
 function finalWin() {
+  completedWordImg.src = "imgs/pusheen-dancing.gif";
   wordEl.innerHTML = `CONGRATULATIONS!<br>You won the game!`;
   confetti2();
 }
@@ -150,7 +152,7 @@ function continueGame() {
     button.disabled = false;
   });
   progressImg.classList.remove("hidden");
-  completedWordImgEl.classList.add("hidden");
+  completedWordImg.classList.add("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
 }
@@ -167,11 +169,8 @@ function resetGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
-  completedWordImgEl.classList.add("hidden");
-  progressImg.classList.add("hidden");
+  hideBtnsImgs();
   startupImg.classList.remove("hidden");
-  resetBtn.classList.add("hidden");
-  continueBtn.classList.add("hidden");
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
   // gameStatusMsg.innerText = "";
@@ -183,6 +182,13 @@ function loseGame() {
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
+}
+
+function hideBtnsImgs() {
+  completedWordImg.classList.add("hidden");
+  progressImg.classList.add("hidden");
+  resetBtn.classList.add("hidden");
+  continueBtn.classList.add("hidden");
 }
 
 // confetti from tsParticles - used for end of game confetti
