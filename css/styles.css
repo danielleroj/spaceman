@@ -6,6 +6,9 @@
 body {
     display: flex;
     justify-content: center;
+    /* test below */
+    align-items: center;
+    height: 98vh;
     text-align: center;
     background-image: url("../imgs/wp10955414-cake-shop-wallpapers.jpg");
     background-size: cover;
@@ -17,7 +20,7 @@ body {
     background-color: rgb(247, 222, 140, .8);
     border-radius: 5%;
     box-shadow: 0px 3px 10px black;
-    margin-top: 1vmin;
+    border-radius: 5%;
 }
 
 .container > h1 {
@@ -107,3 +110,4 @@ button:hover {
 button:disabled {
     opacity: .3;
 }
+
