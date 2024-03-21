@@ -1,7 +1,9 @@
-# SPACEMAN - CLOUD CAKE CAFE
+# <p align="center">SPACEMAN - CLOUD CAKE CAFE</p>
 
-**Created by [Danielle Rojas](https://www.linkedin.com/in/daniellerojas1/)**
-### [CLICK TO PLAY](https://danielleroj.github.io/spaceman/)
+#### <p align="center">Created by [Danielle Rojas](https://www.linkedin.com/in/daniellerojas1/)</p>
+
+### <p align="center">[CLICK TO PLAY](https://danielleroj.github.io/spaceman/)</p>
+
 A word-guessing game where the player must solve the hidden words by guessing letters, with the words getting longer as the game continues. 
 
 ## Screenshots
@@ -11,7 +13,7 @@ A word-guessing game where the player must solve the hidden words by guessing le
 | Startup | <div id="header" align="center"><img src="https://i.imgur.com/kZfEIFx.jpg" width="800" height="400"></div> |
 | Correct Word | <div id="header" align="center"><img src="https://i.imgur.com/cr9NlVU.jpeg" width="800" height="400"></div> |
 | Out of Guesses/Lose game | <div id="header" align="center"><img src="https://i.imgur.com/o7Nbk7K.jpeg" width="800" height="400"></div> |
-| Win Game | <div id="header" align="center"><img src="https://i.imgur.com/PLy1Hry.jpeg" width="800" height="400"></div> |
+| Win Game | <div id="header" align="center"><img src="https://i.imgur.com/9mE5071.jpeg" width="800" height="400"></div> |
 
 ## Technologies Used
 
