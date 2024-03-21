@@ -44,6 +44,10 @@ p {
     width: 30vmin;
 }
 
+#word-complete-img {
+    width: 30vmin;
+}
+
 .hidden {
     display: none;
 }

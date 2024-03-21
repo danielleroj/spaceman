@@ -1,17 +1,34 @@
 /*----- constants -----*/
-const WORDS = ["cake", "espresso", "croissant", "tiramisu", "coffee", "latte", 
-"cappuccino", "mocha", "baguette", "scone", "pastry", "cupcake", "macaron", "donut",
-"biscotti", "brioche", "danish", "tart", "eclair", "muffin", "biscuit", "pancake"];
+const WORDS = [
+  "cake",
+  "espresso",
+  "croissant",
+  "tiramisu",
+  "coffee",
+  "latte",
+  "cappuccino",
+  "mocha",
+  "baguette",
+  "scone",
+  "pastry",
+  "cupcake",
+  "macaron",
+  "donut",
+  "biscotti",
+  "brioche",
+  "danish",
+  "tart",
+  "eclair",
+  "muffin",
+  "biscuit",
+  "pancake",
+];
 const MAX_GUESSES = 6;
-// const SPACECAT_IMGS = [
-//   "imgs/spacecat-0.png",
-//   "imgs/spacecat-1.png",
-//   "imgs/spacecat-2.png",
-//   "imgs/spacecat-3.png",
-//   "imgs/spacecat-4.png",
-//   "imgs/spacecat-5.png",
-//   "imgs/spacecat-6.png",
-// ];
+const completeWordImgs = [
+  "imgs/pusheen-cookie.gif",
+  "imgs/pusheen-bun.gif",
+  "imgs/pusheen-reeses.gif",
+];
 
 /*----- app's state (variables) -----*/
 let currentWordIdx = 0;
@@ -31,7 +48,7 @@ const progressImg = document.querySelector("#sad-cat-img");
 const startupImg = document.querySelector("#happy-cat-img");
 const wrongGuessesEl = document.querySelector("#wrong-guesses");
 const completedWordsEl = document.querySelector("#completed-words");
-
+const completedWordImgEl = document.querySelector("#word-complete-img");
 
 /*----- event listeners -----*/
 resetBtn.addEventListener("click", resetGame);
@@ -41,6 +58,7 @@ continueBtn.addEventListener("click", continueGame);
 init();
 
 function init() {
+  completedWordImgEl.classList.add("hidden");
   progressImg.classList.add("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
@@ -53,6 +71,12 @@ function init() {
 
 function renderSpacecatImg() {
   progressImg.src = `imgs/cat-${wrongGuesses}.png`;
+}
+
+function randomImgs() {
+  let randomImg = Math.floor(Math.random() * completeWordImgs.length);
+  completedWordImgEl.src = completeWordImgs[randomImg];
+  completedWordImgEl.classList.remove("hidden");
 }
 
 function renderKeyboard() {
@@ -78,7 +102,9 @@ function renderKeyboard() {
 
 function wordPlaceholder(word) {
   const placeholder = "🧁";
-  let mysteryWord = word.split("").map((letter) => guessedLetters.includes(letter) ? letter : placeholder);
+  let mysteryWord = word
+    .split("")
+    .map((letter) => (guessedLetters.includes(letter) ? letter : placeholder));
   wordEl.innerText = mysteryWord.join("");
   if (!mysteryWord.includes(placeholder)) {
     checkWin();
@@ -91,14 +117,15 @@ function getNextWord() {
   if (currentWordIdx < WORDS.length) {
     return WORDS[currentWordIdx++];
   } else {
-    confetti2();
-    gameStatusMsg.innerText = "CONGRATULATIONS! You've won the game!";
+    finalWin();
   }
 }
 
-function checkWin(){
+function checkWin() {
   completedWords++;
-  gameStatusMsg.innerText =  `You did it!`;
+  randomImgs();
+  gameStatusMsg.innerText = `You did it!`;
+  progressImg.classList.add("hidden");
   resetBtn.classList.remove("hidden");
   continueBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
@@ -107,6 +134,11 @@ function checkWin(){
   completedWordsEl.innerText = `Completed Words: ${completedWords}`;
 
   confetti();
+}
+
+function finalWin() {
+  wordEl.innerHTML = `CONGRATULATIONS!<br>You won the game!`;
+  confetti2();
 }
 
 function continueGame() {
@@ -119,6 +151,8 @@ function continueGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
+  progressImg.classList.remove("hidden");
+  completedWordImgEl.classList.add("hidden");
   resetBtn.classList.add("hidden");
   continueBtn.classList.add("hidden");
 }
@@ -135,6 +169,7 @@ function resetGame() {
   letterBtns.forEach((button) => {
     button.disabled = false;
   });
+  completedWordImgEl.classList.add("hidden");
   progressImg.classList.add("hidden");
   startupImg.classList.remove("hidden");
   resetBtn.classList.add("hidden");
@@ -142,48 +177,47 @@ function resetGame() {
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
   gameStatusMsg.innerText = "";
-
 }
 
 function loseGame() {
-  gameStatusMsg.innerText =  `Better luck next time!`;
+  gameStatusMsg.innerText = `Better luck next time!`;
   resetBtn.classList.remove("hidden");
   letterBtns.forEach((button) => {
     button.disabled = true;
   });
 }
 
-// expirimental confetti
+// game winning confetti
 function confetti2() {
   const duration = 15 * 1000,
-  animationEnd = Date.now() + duration,
-  defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+    animationEnd = Date.now() + duration,
+    defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-function randomInRange(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-const interval = setInterval(function() {
-  const timeLeft = animationEnd - Date.now();
-
-  if (timeLeft <= 0) {
-    return clearInterval(interval);
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
   }
 
-  const particleCount = 50 * (timeLeft / duration);
+  const interval = setInterval(function () {
+    const timeLeft = animationEnd - Date.now();
 
-  // since particles fall down, start a bit higher than random
-  confetti(
-    Object.assign({}, defaults, {
-      particleCount,
-      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-    })
-  );
-  confetti(
-    Object.assign({}, defaults, {
-      particleCount,
-      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-    })
-  );
-}, 250);
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+
+    // since particles fall down, start a bit higher than random
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      })
+    );
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      })
+    );
+  }, 250);
 }
