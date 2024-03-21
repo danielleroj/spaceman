@@ -38,7 +38,6 @@ let wrongGuesses;
 let word;
 
 // /*----- cached element references -----*/
-const messageEl = document.querySelector("#message");
 const gameStatusMsg = document.querySelector("#game-status-message");
 const wordEl = document.querySelector("#mystery-word");
 const resetBtn = document.querySelector("#reset");
@@ -132,7 +131,6 @@ function checkWin() {
     button.disabled = true;
   });
   completedWordsEl.innerText = `Completed Words: ${completedWords}`;
-
   confetti();
 }
 
@@ -176,7 +174,7 @@ function resetGame() {
   continueBtn.classList.add("hidden");
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
-  gameStatusMsg.innerText = "";
+  // gameStatusMsg.innerText = "";
 }
 
 function loseGame() {
@@ -187,7 +185,7 @@ function loseGame() {
   });
 }
 
-// game winning confetti
+// confetti from tsParticles - used for end of game confetti
 function confetti2() {
   const duration = 15 * 1000,
     animationEnd = Date.now() + duration,

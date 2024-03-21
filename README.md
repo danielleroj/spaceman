@@ -1,36 +1,22 @@
-# SPACEMAN
-## Psuedocode
-### Define required constants
-    Letters
-    Categories
+# SPACEMAN - CLOUD CAKE CAFE
 
-### Define required variables to track state of game
-    Guesses (7)
-    Chosen category
-    Word in category
-    Incorrect guesses
+**Created by [Danielle Rojas](https://www.linkedin.com/in/daniellerojas1/)**
+### [CLICK TO PLAY](https://danielleroj.github.io/spaceman/)
+A word-guessing game where the player must solve the hidden words by guessing letters, with the words getting longer as the game continues. 
 
-### Game state
+## Screenshots
 
-### Store cached elements
-    Word display
-    Image display
-    Letter display?
-    Messages
+| Description | Screenshot |
+| --- | --- |
+| Startup | <div id="header" align="center"><img src="https://i.imgur.com/kZfEIFx.jpg" width="800" height="400"></div> |
+| Correct word | <div id="header" align="center"><img src="https://i.imgur.com/cr9NlVU.jpeg" width="800" height="400"></div> |
+| Out of guess/Lose game | <div id="header" align="center"><img src="https://i.imgur.com/o7Nbk7K.jpeg" width="800" height="400"></div> |
+| Win Game | <div id="header" align="center"><img src="https://i.imgur.com/PLy1Hry.jpeg" width="800" height="400"></div> |
 
-### Initialize the game
-    Render values
-    Initialize state variables
-    Display word hidden
-    Wait for user letter selection
-    Show available letters to choose from
-    
-### Handle letter selection
-    Erase selected letters
-    Show letters in guessing line
-    Show image for wrong selection
+## Technologies Used
 
-### Handle replay
-    Lock letters after 6 incorrect guesses
-    Display play again button
-    Start game over/repeat steps
+* JavaScript
+* HTML
+* CSS
+* tsParticles - TypeScript Particles
+

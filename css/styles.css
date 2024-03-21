@@ -52,6 +52,10 @@ p {
     display: none;
 }
 
+.visibility {
+    visibility: hidden;
+}
+
 .keyboard {
     margin-left: 5vmin;
     margin-right: 5vmin;
