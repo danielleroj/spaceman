@@ -4,7 +4,12 @@
 
 ### <p align="center">[CLICK TO PLAY](https://danielleroj.github.io/spaceman/)</p>
 
-A word-guessing game where the player must solve the hidden words by guessing letters, with the words getting longer as the game continues. 
+Cloud Cake Cafe is a spaceman/hangman inspired word game. The game challenges players to decipher hidden words by strategically selecting letters. With each correct guess, letters are revealed while incorrect guesses deplete the limited attempts available. Visual aids, including a gradually revealing progress image and a visible guess count, assist players through the game.
+
+### Features
+* **Sequiential Word Progression:** Words follow a sequence from shorter to longer, offering a progressively challenging experience.
+* **Game Over/Restart:** Using all of the limited guesses requires a game restart, adding a memory game element.
+* **End Game Achievement:** Successful playthrough culminate in a congratulatory end-of-game screen.
 
 ## Screenshots
 
@@ -25,10 +30,24 @@ A word-guessing game where the player must solve the hidden words by guessing le
 
 
 <details open>
+    <summary>How to Play</summary>
+    <ol>
+        <li>Guess letters to unveil the hidden word.</li>
+        <li>Utilize the progress image and guess count to gauge progress.</li>
+        <li>Navigate through the words sequentially, starting with shorter ones.</li>
+        <li>Either:</li>
+            <ul>
+            <li>After succesfully completing the current word, continue the game.</li>
+            <li>Or after using up all the guesses, lose the game and restart.</li>
+            </ul>
+        <li>Aim for a flawless completion of the game to reach the game's conclusion.</li>
+    </ol>
+</details>
+<details>
     <summary> Project Planning Link</summary>
     Link to full project planning including psuedocode and wireframe on <a href="https://trello.com/b/ac55UcYF/cloud-cake-cafe-spaceman">Trello</a>.
 </details>
-<details open>
+<details>
     <summary>Deployment Link</summary>
     <a href="https://danielleroj.github.io/spaceman/">danielleroj.github.io/spaceman/</a>
 </details>
@@ -36,5 +55,5 @@ A word-guessing game where the player must solve the hidden words by guessing le
 ## Next Steps
 ### Future Improvements/Features
 - [ ] Customization of audio player.
-- [ ] Player's highest score (completed words) dispayed.
+- [ ] Player's highest ever score (completed words) dispayed.
 - [ ] Move on to a next set of words after winning game, possibly with a different theme and more challenging. 
