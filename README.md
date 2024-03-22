@@ -18,7 +18,7 @@ Cloud Cake Cafe is a spaceman/hangman inspired word game. The game challenges pl
 | Startup | <div id="header" align="center"><img src="https://i.imgur.com/kZfEIFx.jpg" width="800" height="400"></div> |
 | Correct Word | <div id="header" align="center"><img src="https://i.imgur.com/cr9NlVU.jpeg" width="800" height="400"></div> |
 | Out of Guesses/Lose game | <div id="header" align="center"><img src="https://i.imgur.com/o7Nbk7K.jpeg" width="800" height="400"></div> |
-| Win Game | <div id="header" align="center"><img src="https://i.imgur.com/9mE5071.jpeg" width="800" height="400"></div> |
+| Win Game | <div id="header" align="center"><img src="https://i.imgur.com/e10jqRo.jpeg" width="800" height="400"></div> |
 
 ## Technologies Used
 
