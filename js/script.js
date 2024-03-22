@@ -69,7 +69,7 @@ function init() {
   wordPlaceholder(word);
 }
 
-function renderSpacecatImg() {
+function renderProgressImg() {
   progressImg.src = `imgs/cat-${wrongGuesses}.png`;
 }
 
@@ -94,7 +94,7 @@ function renderKeyboard() {
       progressImg.classList.remove("hidden");
       startupImg.classList.add("hidden");
       wordPlaceholder(word);
-      renderSpacecatImg();
+      renderProgressImg();
       button.disabled = true;
     });
   });
@@ -148,7 +148,7 @@ function continueGame() {
   guessedLetters = [];
   wrongGuesses = 0;
   word = getNextWord();
-  renderSpacecatImg();
+  renderProgressImg();
   wordPlaceholder(word);
   gameStatusMsg.innerText = "";
   letterBtns.forEach((button) => {
@@ -167,7 +167,7 @@ function resetGame() {
   completedWords = 0;
   word = getNextWord();
   wordPlaceholder(word);
-  renderSpacecatImg();
+  renderProgressImg();
   gameStatusMsg.innerText = "";
   letterBtns.forEach((button) => {
     button.disabled = false;
@@ -176,7 +176,6 @@ function resetGame() {
   startupImg.classList.remove("hidden");
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
-  // gameStatusMsg.innerText = "";
 }
 
 function loseGame() {
