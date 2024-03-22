@@ -1,23 +1,23 @@
 /*----- constants -----*/
 const WORDS = [
   "cake",
-  "espresso",
+  "pecan pie",
   "croissant",
   "tiramisu",
   "coffee",
-  "latte",
+  "apple crisp",
   "cappuccino",
   "mocha",
   "baguette",
   "scone",
-  "pastry",
+  "cheesecake",
   "cupcake",
   "macaron",
   "donut",
   "biscotti",
   "brioche",
   "danish",
-  "tart",
+  "chocolate cake",
   "eclair",
   "muffin",
   "biscuit",
@@ -102,9 +102,12 @@ function renderKeyboard() {
 
 function wordPlaceholder(word) {
   const placeholder = "🧁";
-  let mysteryWord = word
-    .split("")
-    .map((letter) => (guessedLetters.includes(letter) ? letter : placeholder));
+  let mysteryWord = word.split("").map((letter) => {
+    if (letter === " ") {
+      return " ";
+    }
+    return guessedLetters.includes(letter) ? letter : placeholder;
+  });
   wordEl.innerText = mysteryWord.join("");
   if (!mysteryWord.includes(placeholder)) {
     checkWin();
