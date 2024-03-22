@@ -4,7 +4,6 @@ const WORDS = [
   "pecan pie",
   "croissant",
   "tiramisu",
-  "coffee",
   "apple crisp",
   "cappuccino",
   "mocha",
@@ -19,9 +18,8 @@ const WORDS = [
   "danish",
   "chocolate cake",
   "eclair",
-  "muffin",
   "biscuit",
-  "pancake",
+  "pancake"
 ];
 const MAX_GUESSES = 6;
 const completeWordImgs = [
