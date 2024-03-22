@@ -69,15 +69,6 @@ function init() {
   wordPlaceholder(word);
 }
 
-function renderProgressImg() {
-  progressImg.src = `imgs/cat-${wrongGuesses}.png`;
-}
-
-function randomImgs() {
-  let randomImg = Math.floor(Math.random() * completeWordImgs.length);
-  completedWordImg.src = completeWordImgs[randomImg];
-  completedWordImg.classList.remove("hidden");
-}
 
 function renderKeyboard() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -126,7 +117,7 @@ function getNextWord() {
 
 function checkWin() {
   completedWords++;
-  randomImgs();
+  renderRandomImgs();
   gameStatusMsg.innerText = `You did it!`;
   progressImg.classList.add("hidden");
   resetBtn.classList.remove("hidden");
@@ -138,11 +129,6 @@ function checkWin() {
   confetti();
 }
 
-function finalWin() {
-  completedWordImg.src = "imgs/pusheen-dancing.gif";
-  wordEl.innerHTML = `CONGRATULATIONS!<br>You won the game!`;
-  confetti2();
-}
 
 function continueGame() {
   guessedLetters = [];
@@ -176,6 +162,23 @@ function resetGame() {
   startupImg.classList.remove("hidden");
   completedWordsEl.innerText = `Completed words: ${completedWords}`;
   wrongGuessesEl.innerText = `Wrong Guesses: ${wrongGuesses}/6`;
+}
+
+function renderProgressImg() {
+  progressImg.src = `imgs/cat-${wrongGuesses}.png`;
+}
+
+function renderRandomImgs() {
+  let randomImg = Math.floor(Math.random() * completeWordImgs.length);
+  completedWordImg.src = completeWordImgs[randomImg];
+  completedWordImg.classList.remove("hidden");
+}
+
+function finalWin() {
+  completedWordImg.src = "imgs/pusheen-dancing.gif";
+  wordEl.innerHTML = `CONGRATULATIONS!<br>You won the game!`;
+  continueBtn.classList.add("hidden");
+  confetti2();
 }
 
 function loseGame() {
